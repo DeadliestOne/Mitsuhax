@@ -1,45 +1,44 @@
-import time
+import asyncio
 import random
+import time
 from pyrogram import filters
 from pyrogram.enums import ChatType
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, Message
 from youtubesearchpython.__future__ import VideosSearch
 
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 import config
 from AnonXMusic import app
 from AnonXMusic.misc import _boot_
 from AnonXMusic.plugins.sudo.sudoers import sudoers_list
-from AnonXMusic.utils.database import get_served_chats, get_served_users, get_sudoers
 from AnonXMusic.utils import bot_sys_stats
 from AnonXMusic.utils.database import (
     add_served_chat,
     add_served_user,
     blacklisted_chats,
     get_lang,
+    get_served_chats,
+    get_served_users,
     is_banned_user,
     is_on_off,
 )
 from AnonXMusic.utils.decorators.language import LanguageStart
 from AnonXMusic.utils.formatters import get_readable_time
 from AnonXMusic.utils.inline import help_pannel, private_panel, start_panel
-from config import BANNED_USERS
+from config import BANNED_USERS, AYUV
 from strings import get_string
 
-#--------------------------
-
-NEXI_VID = [
-"https://telegra.ph/file/1a3c152717eb9d2e94dc2.mp4",
-"https://graph.org/file/ba7699c28dab379b518ca.mp4",
-"https://graph.org/file/83ebf52e8bbf138620de7.mp4",
-"https://graph.org/file/82fd67aa56eb1b299e08d.mp4",
-"https://graph.org/file/318eac81e3d4667edcb77.mp4",
-"https://graph.org/file/7c1aa59649fbf3ab422da.mp4",
-"https://graph.org/file/2a7f857f31b32766ac6fc.mp4",
-
+ANNIE_VID = [
+    "https://telegra.ph/file/8cf37f9fb1ba2b54df5e2.mp4",
+    "https://telegra.ph/file/1b83ad0f9639432014ec8.mp4",
+    "https://telegra.ph/file/8cf37f9fb1ba2b54df5e2.mp4",
+    "https://telegra.ph/file/c10b0504086f81e968ff4.mp4",
+    "https://telegra.ph/file/20e96aaac87819425b313.mp4",
+    "https://telegra.ph/file/f3d15634b671416a68cef.mp4",
+    "https://telegra.ph/file/6f507524d8f4f6f66867c.mp4",
+    "https://telegra.ph/file/45b3b3f0a215eb080b72a.mp4",
+    "https://telegra.ph/file/2d702eb41b72d35d4ea7e.mp4",
+    "https://telegra.ph/file/f3d15634b671416a68cef.mp4"
 ]
-
-
 
 STICKERS = [
     "CAACAgUAAx0Cd6nKUAACASBl_rnalOle6g7qS-ry-aZ1ZpVEnwACgg8AAizLEFfI5wfykoCR4h4E",
