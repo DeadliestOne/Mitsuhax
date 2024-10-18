@@ -4,7 +4,7 @@ from pyrogram import filters, Client
 from AnonXMusic import app
 from config import OWNER_ID
 from pyrogram.types import Message
-from AnonXMusic.utils.jarvis_ban import admin_filter
+from AnonXMusic.utils.Rio_Ban import admin_filter
 from pyrogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 
 
