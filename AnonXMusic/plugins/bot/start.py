@@ -28,16 +28,7 @@ from config import BANNED_USERS, AYUV
 from strings import get_string
 
 ANNIE_VID = [
-    "https://envs.sh/TV1.me.mp4",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
+    "https://envs.sh/TV1.me.mp4" ,
 ]
 
 STICKERS = [
